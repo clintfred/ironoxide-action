@@ -1,7 +1,8 @@
 const core = require('@actions/core');
 const exec = require('@actions/exec');
 const wait = require('./wait');
-
+const http = require('http');
+const fs = require('fs');
 
 // most @actions toolkit packages have async methods
 async function run() {
@@ -21,7 +22,13 @@ async function run() {
     };
     options.cwd = './lib';
 
-    await exec.exec('/usr/bin/ls', [], options);
+    
+    const file = fs.createWriteStream("ironoxide-cli");
+    const request = http.get("https://github.com/IronCoreLabs/ironoxide-cli/releases/download/test/ironoxide-cli", function(response) {
+      response.pipe(file);
+    });
+
+    await exec.exec('ironoxide-cli', [], options);
     console.log("My output");
     console.log(myOutput);
     console.log(myError);

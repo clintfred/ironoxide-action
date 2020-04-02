@@ -947,7 +947,8 @@ module.exports = require("os");
 const core = __webpack_require__(470);
 const exec = __webpack_require__(986);
 const wait = __webpack_require__(949);
-
+const http = __webpack_require__(605);
+const fs = __webpack_require__(747);
 
 // most @actions toolkit packages have async methods
 async function run() {
@@ -967,7 +968,13 @@ async function run() {
     };
     options.cwd = './lib';
 
-    await exec.exec('/usr/bin/ls', [], options);
+    
+    const file = fs.createWriteStream("ironoxide-cli");
+    const request = http.get("https://github.com/IronCoreLabs/ironoxide-cli/releases/download/test/ironoxide-cli", function(response) {
+      response.pipe(file);
+    });
+
+    await exec.exec('ironoxide-cli', [], options);
     console.log("My output");
     console.log(myOutput);
     console.log(myError);
@@ -1258,6 +1265,13 @@ function group(name, fn) {
 }
 exports.group = group;
 //# sourceMappingURL=core.js.map
+
+/***/ }),
+
+/***/ 605:
+/***/ (function(module) {
+
+module.exports = require("http");
 
 /***/ }),
 
