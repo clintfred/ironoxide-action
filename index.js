@@ -6,7 +6,7 @@ const fs = require('fs');
 // var downloadReleases = require('dl-github-releases');
 
 // most @actions toolkit packages have async methods
-function run() {
+async function run() {
   try { 
 
     let myOutput = '';
@@ -51,7 +51,7 @@ function run() {
     console.log(`Waaiting ${ms} milliseconds ...`)
 
     core.debug((new Date()).toTimeString())
-    wait(parseInt(ms));
+    await wait(parseInt(ms));
     core.debug((new Date()).toTimeString())
 
     core.setOutput('time', new Date().toTimeString());
