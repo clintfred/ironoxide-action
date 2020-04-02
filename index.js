@@ -24,7 +24,7 @@ async function run() {
 
     
     const file = fs.createWriteStream("ironoxide-cli");
-    const request = http.get("https://github.com/IronCoreLabs/ironoxide-cli/releases/download/test/ironoxide-cli", function(response) {
+    const request = http.get("http://github.com/IronCoreLabs/ironoxide-cli/releases/download/test/ironoxide-cli", function(response) {
       response.pipe(file);
     });
 
