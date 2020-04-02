@@ -20,7 +20,7 @@ async function run() {
         myError += data.toString();
       }
     };
-    options.cwd = './lib';
+    // options.cwd = './lib';
 
     
     const file = fs.createWriteStream("ironoxide-cli");
