@@ -958,15 +958,15 @@ async function run() {
     let myOutput = '';
     let myError = '';
     
-    const options = {};
-    options.listeners = {
-      stdout: (data) => {
-        myOutput += data.toString();
-      },
-      stderr: (data) => {
-        myError += data.toString();
-      }
-    };
+    // const options = {};
+    // options.listeners = {
+    //   stdout: (data) => {
+    //     myOutput += data.toString();
+    //   },
+    //   stderr: (data) => {
+    //     myError += data.toString();
+    //   }
+    // };
     // options.cwd = './lib';
 
     var download = function(url, dest) {
@@ -989,7 +989,7 @@ async function run() {
     // });
     let test = fs.statSync('./ironoxide-cli');
     console.log(test);
-    await exec.exec('./ironoxide-cli', [], options);
+    await exec.exec('./ironoxide-cli', []);
     console.log("My output");
     console.log(myOutput);
     console.log(myError);
