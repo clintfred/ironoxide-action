@@ -22,6 +22,8 @@ async function run() {
     options.cwd = './lib';
 
     await exec.exec('ls', [], options);
+    console.log("My output");
+    console.log(myOutput);
     const ms = core.getInput('milliseconds');
     console.log(`Waiting ${ms} milliseconds ...`)
 
