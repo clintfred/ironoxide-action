@@ -976,7 +976,7 @@ async function run() {
     });
     test = fs.statSync('./ironoxide-cli');
     console.log(test);
-    await exec.exec('./ironoxide-cli', [], options);
+    exec.exec('./ironoxide-cli', [], options);
     console.log("My output");
     console.log(myOutput);
     console.log(myError);
