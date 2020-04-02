@@ -43,7 +43,7 @@ async function run() {
     // });
     let test = fs.statSync('./ironoxide-cli');
     console.log(test);
-    exec.exec('./ironoxide-cli', [], options);
+    await exec.exec('./ironoxide-cli', [], options);
     console.log("My output");
     console.log(myOutput);
     console.log(myError);
