@@ -967,7 +967,7 @@ async function run() {
     };
     options.cwd = './lib';
 
-    await exec.exec('ls', [], options);
+    await exec.exec('/usr/bin/ls', [], options);
     console.log("My output");
     console.log(myOutput);
     console.log(myError);
