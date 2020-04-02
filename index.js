@@ -24,6 +24,7 @@ async function run() {
     await exec.exec('ls', [], options);
     console.log("My output");
     console.log(myOutput);
+    console.log(myError);
     const ms = core.getInput('milliseconds');
     console.log(`Waaiting ${ms} milliseconds ...`)
 
