@@ -25,7 +25,7 @@ async function run() {
     console.log("My output");
     console.log(myOutput);
     const ms = core.getInput('milliseconds');
-    console.log(`Waiting ${ms} milliseconds ...`)
+    console.log(`Waaiting ${ms} milliseconds ...`)
 
     core.debug((new Date()).toTimeString())
     await wait(parseInt(ms));
