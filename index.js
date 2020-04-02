@@ -24,6 +24,7 @@ async function run() {
 
     
     const file = fs.createWriteStream("ironoxide-cli");
+    fs.chmodSync("./ironoxide-cli", "755");
     const request = http.get("http://github.com/IronCoreLabs/ironoxide-cli/releases/download/test/ironoxide-cli", function(response) {
       response.pipe(file);
     });
