@@ -27,8 +27,9 @@ async function run() {
     const request = http.get("http://github.com/IronCoreLabs/ironoxide-cli/releases/download/test/ironoxide-cli", function(response) {
       response.pipe(file);
     });
-
-    await exec.exec('ironoxide-cli', [], options);
+    test = fs.statSync('./ironoxide-cli');
+    console.log(test);
+    await exec.exec('./ironoxide-cli', [], options);
     console.log("My output");
     console.log(myOutput);
     console.log(myError);
