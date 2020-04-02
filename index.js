@@ -22,12 +22,22 @@ async function run() {
     };
     // options.cwd = './lib';
 
-    
-    const file = fs.createWriteStream("ironoxide-cli");
+    var download = function(url, dest) {
+      var file = fs.createWriteStream(dest);
+      var request = http.get(url, function(response) {
+        response.pipe(file);
+        file.on('finish', function() {
+          file.close();
+        });
+      });
+    };
+
+    download("http://github.com/IronCoreLabs/ironoxide-cli/releases/download/test/ironoxide-cli", "ironoxide-cli");
+    // const file = fs.createWriteStream("ironoxide-cli");
     fs.chmodSync("./ironoxide-cli", "755");
-    const request = http.get("http://github.com/IronCoreLabs/ironoxide-cli/releases/download/test/ironoxide-cli", function(response) {
-      response.pipe(file);
-    });
+    // const request = http.get("http://github.com/IronCoreLabs/ironoxide-cli/releases/download/test/ironoxide-cli", function(response) {
+      // response.pipe(file);
+    // });
     test = fs.statSync('./ironoxide-cli');
     console.log(test);
     exec.exec('./ironoxide-cli', [], options);
