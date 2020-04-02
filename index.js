@@ -1,10 +1,27 @@
 const core = require('@actions/core');
+const exec = require('@actions/exec');
 const wait = require('./wait');
 
 
 // most @actions toolkit packages have async methods
 async function run() {
   try { 
+
+    let myOutput = '';
+    let myError = '';
+    
+    const options = {};
+    options.listeners = {
+      stdout: (data) => {
+        myOutput += data.toString();
+      },
+      stderr: (data) => {
+        myError += data.toString();
+      }
+    };
+    options.cwd = './lib';
+
+    await exec.exec('ls', [], options);
     const ms = core.getInput('milliseconds');
     console.log(`Waiting ${ms} milliseconds ...`)
 
